@@ -2,7 +2,7 @@ library(scales)
 library(ggplot2)
 library(dplyr)
 library(lubridate)
-setwd("~/Dropbox/PhD/2016 Gigascience - publication/10 - publication")
+setwd("~/Dropbox/PhD/2 - 2017 Data - publication/02 - Code and Data")
 
 # preprocessed data from FitBit Charge HR
 hr_xfb <- read.csv("data/out/experiment-1_fitbit.csv",header = T)
@@ -51,8 +51,9 @@ hr_xpb.sub.agg$date_time_diff <- hr_xpb.sub.agg$date_time_diff * 60 # in seconds
 
 data <- rbind(hr_xfb.sub.agg, hr_xpb.sub.agg)
 
-png(filename = "graphs/01-gaps_in_data_per_day_and_hour.png", 
-    width = 1920, height = 1080, units = "px", res = 300, bg = "transparent")
+#png(filename = "graphs/01-gaps_in_data_per_day_and_hour.png", width = 1920, height = 1080, units = "px", res = 300, bg = "transparent")
+setEPS()
+postscript(file = "graphs/01-gaps-in-data-per-day-and-hour.eps", width = 6.4, height = 3.6)
 m <- ggplot(data, aes(x = as.Date(date), y = time_h))
 m <- m + stat_sum(aes(group = 1, size = date_time_diff, colour = date_time_diff), show.legend = F)
 m <- m + theme_bw() + labs(x = "date", y = "hours", colour = "gaps in sec.")

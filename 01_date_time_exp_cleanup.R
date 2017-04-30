@@ -1,4 +1,4 @@
-setwd("~/Dropbox/PhD/2016 Gigascience - publication/10 - publication")
+setwd("~/Dropbox/PhD/2 - 2017 Data - publication/02 - Code and Data")
 library(ggplot2)
 library(lubridate)
 
@@ -18,7 +18,7 @@ tw_xfb$date_time_diff <- abs(as.numeric(difftime(strptime(tw_xfb$date_time,"%Y-%
 #nrow(tw_xfb[tw_xfb$date_time_diff < 0, c(2,3,6)]) #0
 #nrow(tw_xfb[tw_xfb$date_time_diff > 5400, c(2,3,6)]) #2
 
-tw_xfb <- data.frame(day_pos = tw_xfb$day_pos, date_time = tw_xfb$date_time, 
+tw_xfb <- data.frame(day_pos = tw_xfb$day_pos, date_time = tw_xfb$date_time,
                      date_time_exp = tw_xfb$date_time_exp, sent_num = tw_xfb$sent_num, text = tw_xfb$text)
 write.csv(tw_xfb, file = "data/out/experiment-1_twitter.csv", row.names = F)
 
@@ -38,7 +38,7 @@ tw_xpb$date_time_diff <- abs(as.numeric(difftime(strptime(tw_xpb$date_time,"%Y-%
 #nrow(tw_xpb[tw_xpb$date_time_diff < 0, c(2,3,6)]) #0
 #nrow(tw_xpb[tw_xpb$date_time_diff > 5400, c(2,3,6)]) #0
 
-tw_xpb <- data.frame(day_pos = tw_xpb$day_pos, date_time = tw_xpb$date_time, 
+tw_xpb <- data.frame(day_pos = tw_xpb$day_pos, date_time = tw_xpb$date_time,
                      date_time_exp = tw_xpb$date_time_exp, sent_num = tw_xpb$sent_num, text = tw_xpb$text)
 write.csv(tw_xpb, file = "data/out/experiment-2_twitter.csv", row.names = F)
 

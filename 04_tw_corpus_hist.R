@@ -1,4 +1,4 @@
-setwd("~/Dropbox/PhD/2016 Gigascience - publication/10 - publication")
+setwd("~/Dropbox/PhD/2 - 2017 Data - publication/02 - Code and Data")
 library(ggplot2)
 library(lubridate)
 
@@ -36,19 +36,21 @@ tw_xpb.sub <- tw_xpb.sub[as.numeric(tw_xpb.sub$time_h) != 1,]
 
 data <- rbind(tw_xfb.sub, tw_xpb.sub)
 
-png(filename = "03_tweets_per_hour.png", 
-    width = 2200, height = 1000, units = "px", res = 300, bg = "transparent")
+#png(filename = "graphs/03_tweets_per_hour.png", width = 2200, height = 1000, units = "px", res = 300, bg = "transparent")
+setEPS()
+postscript("graphs/03-tweets-per-hour.eps", width = 7.33, height = 3.33)
 m <- ggplot(data, aes(time_h_fact, fill = sent)) + geom_bar() + theme_bw()
-m <- m + labs(x = "hours", y = "count of tweets")
+m <- m + labs(x = "hours", y = "count of tweets", fill = "sentiment")
 m <- m + facet_wrap(~source, scales="free_x")
 m <- m + scale_x_discrete(labels = c("7","","9","","11","","13","","15","","17","","19","","21","","23",""))
 m
 dev.off()
 
-png(filename = "04_tweets_difference_to_expected.png", 
-    width = 2200, height = 1000, units = "px", res = 300, bg = "transparent")
+#png(filename = "graphs/04_tweets_difference_to_expected.png", width = 2200, height = 1000, units = "px", res = 300, bg = "transparent")
+setEPS()
+postscript("graphs/04-tweets-difference-to-expected.eps", width = 7.33, height = 3.33)
 m <- ggplot(data, aes(round(date_time_diff/60), fill=sent)) + geom_bar() + theme_bw()
-m <- m + labs(x = "minutes", y = "count of tweets")
+m <- m + labs(x = "minutes", y = "count of tweets", fill = "sentiment")
 m <- m + facet_wrap(~source, scales="fixed")
 m <- m + scale_x_continuous(limits = c(0, 45))
 m

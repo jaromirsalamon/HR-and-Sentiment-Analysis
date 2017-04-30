@@ -1,4 +1,4 @@
-setwd("~/Dropbox/PhD/2016 Gigascience - publication/10 - publication")
+setwd("~/Dropbox/PhD/2 - 2017 Data - publication/02 - Code and Data")
 library(lubridate)
 library(dplyr)
 
